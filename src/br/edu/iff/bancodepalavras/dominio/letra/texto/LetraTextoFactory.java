@@ -9,6 +9,7 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	/**
 	 * O construtor e privado para apenas a proprica classe criar uma instancia unica de si (Singleton)
 	 * 
+	 * @author IvanilsoDaSilva
 	 */
 	private LetraTextoFactory() {
 		super();
@@ -17,6 +18,7 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	/**
 	 * Cria uma instancia unica de LetraTextoFactory (Singleton)
 	 * 
+	 * @author IvanilsoDaSilva
 	 * @return Instancia unica de LetraTextoFactory
 	 */
 	private LetraTextoFactory soleInstance() {
@@ -29,6 +31,7 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	/**
 	 * Obtem uma instancia unica de LetraTextoFactory
 	 * 
+	 * @author IvanilsoDaSilva
 	 * @return Instancia unica de LetraTextoFactory
 	 */
 	public LetraTextoFactory getSoleInstance() {

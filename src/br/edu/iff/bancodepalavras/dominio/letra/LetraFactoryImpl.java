@@ -10,6 +10,7 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	/**
 	 * Obtem uma letra
 	 * 
+	 * @author IvanilsoDaSilva
 	 * @param codigo Codigo da letra a ser buscado
 	 * @return Letra buscada
 	 */
@@ -21,6 +22,7 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	/**
 	 * Obtem a letra encoberta
 	 * 
+	 * @author IvanilsoDaSilva
 	 * @return Letra encoberta
 	 */
 	public final Letra getLetraEncoberta() {
@@ -32,6 +34,7 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	 * 
 	 * É um metodo abstrado para ser implementado pelas classes que herdam (Factory)
 	 * 
+	 * @author IvanilsoDaSilva
 	 * @param codigo Codigo da letra a ser criado
 	 * @return Letra criada
 	 */
