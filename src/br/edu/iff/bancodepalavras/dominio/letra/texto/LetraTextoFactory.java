@@ -4,7 +4,7 @@ import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactoryImpl;
 
 public class LetraTextoFactory extends LetraFactoryImpl {
-	private LetraTextoFactory instancia = null;
+	private static LetraTextoFactory instancia = null;
 	
 	/**
 	 * O construtor e privado para apenas a proprica classe criar uma instancia unica de si (Singleton)
@@ -21,7 +21,7 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 * @author IvanilsoDaSilva
 	 * @return Instancia unica de LetraTextoFactory
 	 */
-	private LetraTextoFactory soleInstance() {
+	private static LetraTextoFactory soleInstance() {
         if (instancia == null) {
         	instancia = new LetraTextoFactory();
         }
@@ -34,12 +34,12 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 * @author IvanilsoDaSilva
 	 * @return Instancia unica de LetraTextoFactory
 	 */
-	public LetraTextoFactory getSoleInstance() {
+	public static LetraTextoFactory getSoleInstance() {
 		return soleInstance();
 	}
 	
 	@Override
-	protected Letra criarLetra(char codigo) {
+	public Letra criarLetra(char codigo) {
         int index = Character.toUpperCase(codigo) - 'A'; // Índice correspondente no array
 
         // Verifica se o código está dentro do intervalo A-Z

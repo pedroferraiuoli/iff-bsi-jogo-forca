@@ -2,7 +2,7 @@ package br.edu.iff.bancodepalavras.dominio.letra;
 
 public abstract class LetraFactoryImpl implements LetraFactory {
 	protected Letra[] pool = new Letra[26];
-	private Letra[] encoberta = new Letra[1];
+	protected Letra encoberta;
 	
 	protected LetraFactoryImpl() {}
 	
@@ -26,7 +26,7 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	 * @return Letra encoberta
 	 */
 	public final Letra getLetraEncoberta() {
-		return encoberta[0];
+		return encoberta;
 	}
 	
 	/**
