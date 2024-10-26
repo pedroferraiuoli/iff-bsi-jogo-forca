@@ -1,4 +1,4 @@
-package br.edu.iff.test.dominio.boneco;
+package br.edu.iff.teste.dominio.boneco;
 
 import static org.junit.jupiter.api.Assertions.*;
 
