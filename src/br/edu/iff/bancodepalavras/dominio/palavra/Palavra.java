@@ -3,9 +3,9 @@ package br.edu.iff.bancodepalavras.dominio.palavra;
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactory;
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
+import br.edu.iff.dominio.ObjetoDominioImpl;
 
-public class Palavra {
-	private long id;
+public class Palavra extends ObjetoDominioImpl {
 	private Tema tema;
 	private LetraFactory letraFactory;
 	private Letra[] letras;
@@ -13,7 +13,7 @@ public class Palavra {
 	private Object context;
 	
 	private Palavra(long id, String palavra, Tema tema) {
-		this.id = id;
+		super(id);
 		
 		for (char string : palavra.toCharArray()) {
 			
