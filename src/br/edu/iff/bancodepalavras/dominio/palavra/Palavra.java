@@ -14,12 +14,12 @@ public class Palavra extends ObjetoDominioImpl {
 	
 	private Palavra(long id, String palavra, Tema tema) {
 		super(id);
+		this.tema = tema; 
 		
+		letras =  new Letra[palavra.length()];
 		for (char string : palavra.toCharArray()) {
 			
 		}
-		
-		this.tema = tema; 
 	}
 	
 	public Palavra criar(long id, String palavra, Tema tema) {
