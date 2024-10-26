@@ -1,4 +1,4 @@
-package br.edu.iff.jogoforca.dominio.test.letra;
+package br.edu.iff.test.dominio.letra;
 
 import static org.junit.jupiter.api.Assertions.*;
 
