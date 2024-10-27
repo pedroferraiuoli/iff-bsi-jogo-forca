@@ -4,7 +4,7 @@ import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactoryImpl;
 
 public class LetraTextoFactory extends LetraFactoryImpl {
-	private static LetraTextoFactory instancia = null;
+	private static LetraTextoFactory soleInstance = null;
 	
 	/**
 	 * O construtor e privado para apenas a proprica classe criar uma instancia unica de si (Singleton)
@@ -15,19 +15,7 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 		super();
 		this.encoberta = new LetraTexto('_');
 	}
-	
-	/**
-	 * Cria uma instancia unica de LetraTextoFactory (Singleton)
-	 * 
-	 * @author IvanilsoDaSilva
-	 * @return Instancia unica de LetraTextoFactory
-	 */
-	private static LetraTextoFactory soleInstance() {
-        if (instancia == null) {
-        	instancia = new LetraTextoFactory();
-        }
-        return instancia;
-    }
+
 	
 	/**
 	 * Obtem uma instancia unica de LetraTextoFactory
@@ -36,7 +24,10 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 * @return Instancia unica de LetraTextoFactory
 	 */
 	public static LetraTextoFactory getSoleInstance() {
-		return soleInstance();
+        if (soleInstance == null) {
+        	return soleInstance = new LetraTextoFactory();
+        }
+        return soleInstance;
 	}
 	
 	@Override

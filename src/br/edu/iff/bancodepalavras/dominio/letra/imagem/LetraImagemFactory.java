@@ -4,7 +4,7 @@ import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactoryImpl;
 
 public class LetraImagemFactory extends LetraFactoryImpl {
-	private static LetraImagemFactory instancia = null;
+	private static LetraImagemFactory soleInstance = null;
 	
 	/**
 	 * O construtor e privado para apenas a proprica classe criar uma instancia unica de si (Singleton)
@@ -17,26 +17,16 @@ public class LetraImagemFactory extends LetraFactoryImpl {
 	}
 	
 	/**
-	 * Cria uma instancia unica de LetraTextoFactory (Singleton)
+	 * Obtem uma instancia unica de LetraImagemFactory
 	 * 
 	 * @author IvanilsoDaSilva
-	 * @return Instancia unica de LetraTextoFactory
-	 */
-	private static LetraImagemFactory soleInstance() {
-        if (instancia == null) {
-        	instancia = new LetraImagemFactory();
-        }
-        return instancia;
-    }
-	
-	/**
-	 * Obtem uma instancia unica de LetraTextoFactory
-	 * 
-	 * @author IvanilsoDaSilva
-	 * @return Instancia unica de LetraTextoFactory
+	 * @return Instancia unica de LetraImagemFactory
 	 */
 	public static LetraImagemFactory getSoleInstance() {
-		return soleInstance();
+        if (soleInstance == null) {
+        	return soleInstance = new LetraImagemFactory();
+        }
+        return soleInstance;
 	}
 	
 	@Override

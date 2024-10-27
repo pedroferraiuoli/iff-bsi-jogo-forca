@@ -1,10 +1,10 @@
 package br.edu.iff.jogoforca.dominio.boneco.texto;
 
-import br.edu.iff.bancodepalavras.dominio.letra.texto.LetraTextoFactory;
 import br.edu.iff.jogoforca.dominio.boneco.Boneco;
 
 public class BonecoTexto implements Boneco {
 	private static BonecoTexto instancia = null;
+	private String[] partes = {"cabeça", "olho esquerdo", "olho direito", "nariz", "boca", "tronco", "braço esquerdo", "braço direito", "perna esquerda", "perna direita"};
 	
 	private BonecoTexto () {
 		super();
@@ -40,53 +40,8 @@ public class BonecoTexto implements Boneco {
 	
 	@Override
 	public void exibir(Object contexto, int partes) {
-		switch (partes) {
-			case 0: {
-				System.out.print("");
-			}
-			case 1: {
-				System.out.print("cabeça");
-				break;
-			}
-			case 2: {
-				System.out.print("cabeça, olho esquerdo");
-				break;
-			}
-			case 3: {
-				System.out.print("cabeça, olho esquerdo, olho direito");
-				break;
-			}
-			case 4: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz");
-				break;
-			}
-			case 5: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz, boca");
-				break;
-			}
-			case 6: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz, boca, tronco");
-				break;
-			}
-			case 7: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz, boca, tronco, braço esquerdo");
-				break;
-			}
-			case 8: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz, boca, tronco, braço esquerdo, braço direito");
-				break;
-			}
-			case 9: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz, boca, tronco, braço esquerdo, braço direito, perna esquerda");
-				break;
-			}
-			case 10: {
-				System.out.print("cabeça, olho esquerdo, olho direito, nariz, boca, tronco, braço esquerdo, braço direito, perna esquerda, perna direita");
-				break;
-			}
-			default: {
-				throw new IllegalArgumentException("Partes devem possuir um numero entre 0 e 10");
-			}
+		for (int i = 0; i < partes; i++) {
+			System.out.print(this.partes[i]);
 		}
 	}
 }

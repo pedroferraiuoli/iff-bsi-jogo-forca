@@ -1,17 +1,14 @@
-package br.edu.iff.jogoforca.dominio.test.boneco;
+package br.edu.iff.teste.dominio.boneco;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import br.edu.iff.bancodepalavras.dominio.letra.texto.LetraTextoFactory;
 import br.edu.iff.jogoforca.dominio.boneco.Boneco;
-import br.edu.iff.jogoforca.dominio.boneco.BonecoFactory;
 import br.edu.iff.jogoforca.dominio.boneco.imagem.BonecoImagemFactory;
-import br.edu.iff.jogoforca.dominio.boneco.texto.BonecoTexto;
 import br.edu.iff.jogoforca.dominio.boneco.texto.BonecoTextoFactory;
 
-class BonecoTest {
+class TesteBoneco {
 	@Test // Recriar esse teste apos implementacao correta dos factorys
     public void testeSeBonecoTextoFactoryInstanciadaRetornaMesmaInstancia() {
 		BonecoTextoFactory bonecoTextoFactory1 = BonecoTextoFactory.getSoleInstance();

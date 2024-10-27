@@ -1,4 +1,4 @@
-package br.edu.iff.jogoforca.dominio.test.letra;
+package br.edu.iff.teste.dominio.letra;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +8,7 @@ import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.imagem.LetraImagemFactory;
 import br.edu.iff.bancodepalavras.dominio.letra.texto.LetraTextoFactory;
 
-class LetraTest {
+class TesteLetra {
     @Test
     public void testeSeLetraTextoFactoryInstanciadaRetornaMesmaInstancia() {
     	LetraTextoFactory letraTextoFactory1 = LetraTextoFactory.getSoleInstance();
