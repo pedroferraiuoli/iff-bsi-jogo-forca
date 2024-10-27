@@ -1,5 +1,9 @@
 package br.edu.iff.jogoforca.dominio.rodada;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.palavra.Palavra;
 import br.edu.iff.dominio.ObjetoDominioImpl;
@@ -12,8 +16,8 @@ public class Item extends ObjetoDominioImpl {
 	private Item(long id, Palavra palavra) {
 		super(id);
 		this.setPalavra(palavra);
-		
 	}
+	
 	private Item(long id, Palavra palavra, int[] posicoesDescobertas, String palavraArriscada) {
 		super(id);
 		this.setPalavra(palavra);
@@ -52,8 +56,39 @@ public class Item extends ObjetoDominioImpl {
 		return palavraArriscada;
 	}
 	
+	public Letra[] getLetrasEncobertas() {
+		List<Letra> letrasEncobertas = new ArrayList<Letra>();
+		for (int i = 0; i < posicoesDescobertas.length; i++) {
+			
+		}
+		return letrasEncobertas.stream().toArray(int[]);
+	}
+	
 	public Palavra getPalavra() {
 		return palavra;
+	}
+	
+	boolean tentar(char codigo) {
+		boolean achou = false;
+		for (int i = 0; i < palavra.getLetras().length; i++) {
+			if (palavra.getLetras()[i].getCodigo() == Character.toUpperCase(codigo)) {
+				posicoesDescobertas[i] = true;
+				achou = true;
+			}
+		}
+		return achou;
+	}
+	
+	void arriscar(String palavra) {
+		this.setPalavraArriscada(palavra);
+	}
+	
+	public boolean arriscou() {
+		return palavraArriscada != null;
+	}
+	
+	public boolean acertou() {
+		return this.palavra.toString() == palavraArriscada;
 	}
 	
 	public Letra[] GetLetrasDescobertas() {
@@ -62,8 +97,7 @@ public class Item extends ObjetoDominioImpl {
 		
 		for(int i = 0; i < palavra.getTamanho() ; i++) {
 			if(posicoesDescobertas[i] == false ) {
-			ListaLetras[i] = Palavra.getLetraFactory().getLetraEncoberta();
-
+				ListaLetras[i] = Palavra.getLetraFactory().getLetraEncoberta();
 			}
 		}
 		return ListaLetras; // FEITO POR CAIKE
