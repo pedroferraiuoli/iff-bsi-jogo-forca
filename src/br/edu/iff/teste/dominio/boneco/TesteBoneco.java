@@ -4,11 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import br.edu.iff.bancodepalavras.dominio.letra.texto.LetraTextoFactory;
 import br.edu.iff.jogoforca.dominio.boneco.Boneco;
-import br.edu.iff.jogoforca.dominio.boneco.BonecoFactory;
 import br.edu.iff.jogoforca.dominio.boneco.imagem.BonecoImagemFactory;
-import br.edu.iff.jogoforca.dominio.boneco.texto.BonecoTexto;
 import br.edu.iff.jogoforca.dominio.boneco.texto.BonecoTextoFactory;
 
 class TesteBoneco {

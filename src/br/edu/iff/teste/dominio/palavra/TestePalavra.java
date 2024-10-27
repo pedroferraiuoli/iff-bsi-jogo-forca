@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class TesteLetra {
     @Test
-    public void testeSeLetraTextoFactoryInstanciadaRetornaMesmaInstancia() {
+    public void teste() {
     	
     }
 }
