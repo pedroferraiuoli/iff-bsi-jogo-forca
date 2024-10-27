@@ -65,6 +65,15 @@ public class Palavra extends ObjetoDominioImpl {
 		}
 	}
 	
+	public void exibir(boolean[] posicoes, Object context) {
+		for (int i = 0; i < posicoes.length; i++) {
+			if (posicoes[i]) {
+				System.out.print(letras[i]);
+			}
+			System.out.println(Palavra.letraFactory.getLetraEncoberta());
+		}
+	}
+	
 	public boolean comparar(String palavra) {
 		return this.toString() == palavra;
 	}
