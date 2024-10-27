@@ -6,6 +6,17 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	
 	protected LetraFactoryImpl() {}
 	
+	/**
+	 * Cria uma letra
+	 * 
+	 * É um metodo abstrado para ser implementado pelas classes que herdam (Factory)
+	 * 
+	 * @author IvanilsoDaSilva
+	 * @param codigo Codigo da letra a ser criado
+	 * @return Letra criada
+	 */
+	protected abstract Letra criarLetra(char codigo);
+	
 	@Override
 	/**
 	 * Obtem uma letra
@@ -26,17 +37,6 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	 * @return Letra encoberta
 	 */
 	public final Letra getLetraEncoberta() {
-		return encoberta;
+		return this.encoberta;
 	}
-	
-	/**
-	 * Cria uma letra
-	 * 
-	 * É um metodo abstrado para ser implementado pelas classes que herdam (Factory)
-	 * 
-	 * @author IvanilsoDaSilva
-	 * @param codigo Codigo da letra a ser criado
-	 * @return Letra criada
-	 */
-	protected abstract Letra criarLetra(char codigo);
 }

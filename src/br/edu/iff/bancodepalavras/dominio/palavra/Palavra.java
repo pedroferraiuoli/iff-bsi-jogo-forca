@@ -20,24 +20,23 @@ public class Palavra extends ObjetoDominioImpl {
 			throw new IllegalStateException("Atributo letraFactory indefinido");
 		}
 		
-		letras =  new Letra[palavra.length()];
+		this.setLetras(palavra);
+		this.setTema(tema);
+	}
+	
+	private void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
+	public void setLetraFactory(LetraFactory letraFactory) {
+		Palavra.letraFactory = letraFactory;
+	}
+	
+	private void setLetras(String palavra) {
+		letras = new Letra[palavra.length()];
 		for (int i = 0; i<palavra.length();i++) {
 			letras[i] = letraFactory.getLetra(palavra.charAt(i));
 		}
-		
-		this.tema = tema; 
-	}
-	
-	public static Palavra reconstituir(long id, String palavra, Tema tema) {
-		return new Palavra(id, palavra, tema);
-	}
-	
-	public static Palavra criar(long id, String palavra, Tema tema) {
-		return new Palavra(id, palavra, tema);
-	}
-	
-	public void setLetraFactory(LetraFactory letraFactory) {
-		Palavra.letraFactory = letraFactory;
 	}
 
 	public static LetraFactory getLetraFactory() {
@@ -49,14 +48,31 @@ public class Palavra extends ObjetoDominioImpl {
 	}
 	
 	public int getTamanho() {
-		return letras.length;
+		return this.letras.length;
 	}
 	
 	public Letra[] getLetras() {
-		return null;
+		return this.letras;
+	}
+	
+	public static Palavra reconstituir(long id, String palavra, Tema tema) {
+		return new Palavra(id, palavra, tema);
+	}
+	
+	public static Palavra criar(long id, String palavra, Tema tema) {
+		return new Palavra(id, palavra, tema);
 	}
 	
 	public void exibir(boolean[] posicoes) {
+		for (int i = 0; i < posicoes.length; i++) {
+			if (posicoes[i]) {
+				System.out.print(letras[i]);
+			}
+			System.out.println(Palavra.letraFactory.getLetraEncoberta());
+		}
+	}
+	
+	public void exibir(boolean[] posicoes, Object context) {
 		for (int i = 0; i < posicoes.length; i++) {
 			if (posicoes[i]) {
 				System.out.print(letras[i]);

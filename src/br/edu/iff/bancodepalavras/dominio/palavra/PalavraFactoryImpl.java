@@ -2,18 +2,27 @@ package br.edu.iff.bancodepalavras.dominio.palavra;
 
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 import br.edu.iff.factory.EntityFactory;
-import br.edu.iff.repository.Repository;
 
 public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory {
 	private static PalavraFactoryImpl soleInstance = null;
+	private PalavraRepository palavraRepository;
 	
-	private PalavraFactoryImpl(Repository repository) {
-		super(repository);
+	private PalavraFactoryImpl(PalavraRepository palavraRepository) {
+		super(palavraRepository);
+		this.setPalavraRepository(palavraRepository);
 	}
 	
-	public static void createSoloInstance(Repository repository) {
+	private void setPalavraRepository(PalavraRepository palavraRepository) {
+		this.palavraRepository = palavraRepository;
+	}
+	
+	public PalavraRepository getPalavraRepository() {
+		return this.palavraRepository;
+	}
+
+	public static void createSoloInstance(PalavraRepository palavraRepository) {
 		if (soleInstance == null) {
-            new PalavraFactoryImpl(repository);
+            new PalavraFactoryImpl(palavraRepository);
         }
 	}
 	
@@ -32,8 +41,6 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
 
 	@Override
 	public Palavra getPalavra(String palavra, Tema tema) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }
