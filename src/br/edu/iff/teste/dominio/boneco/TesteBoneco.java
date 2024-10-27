@@ -11,7 +11,7 @@ import br.edu.iff.jogoforca.dominio.boneco.imagem.BonecoImagemFactory;
 import br.edu.iff.jogoforca.dominio.boneco.texto.BonecoTexto;
 import br.edu.iff.jogoforca.dominio.boneco.texto.BonecoTextoFactory;
 
-class BonecoTest {
+class TesteBoneco {
 	@Test // Recriar esse teste apos implementacao correta dos factorys
     public void testeSeBonecoTextoFactoryInstanciadaRetornaMesmaInstancia() {
 		BonecoTextoFactory bonecoTextoFactory1 = BonecoTextoFactory.getSoleInstance();
