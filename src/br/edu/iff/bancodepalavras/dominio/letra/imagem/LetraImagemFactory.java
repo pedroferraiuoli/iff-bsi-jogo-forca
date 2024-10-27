@@ -16,6 +16,13 @@ public class LetraImagemFactory extends LetraFactoryImpl {
 		this.encoberta = new LetraImagem('_');
 	}
 	
+	private void setEncoberta(LetraImagem letra) {
+		if (letra.getCodigo() < 26 - 'A' || letra.getCodigo() > 0 - 'A') {
+			throw new IllegalArgumentException("A letra coberta não pode ser um caracter entre A e Z");
+		}
+		this.encoberta = letra;
+	}
+	
 	/**
 	 * Obtem uma instancia unica de LetraImagemFactory
 	 * 

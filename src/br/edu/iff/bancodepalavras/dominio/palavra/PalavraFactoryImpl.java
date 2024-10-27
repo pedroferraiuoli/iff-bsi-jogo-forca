@@ -9,9 +9,17 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
 	
 	private PalavraFactoryImpl(PalavraRepository palavraRepository) {
 		super(palavraRepository);
+		this.setPalavraRepository(palavraRepository);
+	}
+	
+	private void setPalavraRepository(PalavraRepository palavraRepository) {
 		this.palavraRepository = palavraRepository;
 	}
 	
+	public PalavraRepository getPalavraRepository() {
+		return this.palavraRepository;
+	}
+
 	public static void createSoloInstance(PalavraRepository palavraRepository) {
 		if (soleInstance == null) {
             new PalavraFactoryImpl(palavraRepository);
@@ -29,10 +37,6 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
             throw new IllegalStateException("A instância não foi criada. Chame createSoloInstance primeiro.");
         }
         return soleInstance;
-	}
-	
-	public PalavraRepository getPalavraRepository() {
-		return this.palavraRepository;
 	}
 
 	@Override

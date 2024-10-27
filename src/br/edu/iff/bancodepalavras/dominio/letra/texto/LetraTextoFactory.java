@@ -2,6 +2,7 @@ package br.edu.iff.bancodepalavras.dominio.letra.texto;
 
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactoryImpl;
+import br.edu.iff.bancodepalavras.dominio.letra.imagem.LetraImagem;
 
 public class LetraTextoFactory extends LetraFactoryImpl {
 	private static LetraTextoFactory soleInstance = null;
@@ -13,10 +14,16 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 */
 	private LetraTextoFactory() {
 		super();
-		this.encoberta = new LetraTexto('_');
+		this.encoberta = new LetraImagem('_');
+	}
+	
+	private void setEncoberta(LetraTexto letra) {
+		if (Character.toUpperCase(letra.getCodigo()) < 26 - 'A' || Character.toUpperCase(letra.getCodigo()) > 0 - 'A') {
+			throw new IllegalArgumentException("A letra coberta não pode ser um caracter entre A e Z");
+		}
+		this.encoberta = letra;
 	}
 
-	
 	/**
 	 * Obtem uma instancia unica de LetraTextoFactory
 	 * 

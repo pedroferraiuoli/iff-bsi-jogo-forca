@@ -1,5 +1,6 @@
 package br.edu.iff.jogoforca.dominio.rodada;
 
+import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.palavra.Palavra;
 import br.edu.iff.dominio.ObjetoDominioImpl;
 
@@ -55,5 +56,16 @@ public class Item extends ObjetoDominioImpl {
 		return palavra;
 	}
 	
-	
+	public Letra[] GetLetrasDescobertas() {
+		Letra[] ListaLetras;
+		ListaLetras = palavra.getLetras();
+		
+		for(int i = 0; i < palavra.getTamanho() ; i++) {
+			if(posicoesDescobertas[i] == false ) {
+			ListaLetras[i] = Palavra.getLetraFactory().getLetraEncoberta();
+
+			}
+		}
+		return ListaLetras; // FEITO POR CAIKE
+	}
 }

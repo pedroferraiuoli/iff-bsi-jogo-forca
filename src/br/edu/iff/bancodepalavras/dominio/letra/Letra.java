@@ -10,6 +10,10 @@ public abstract class Letra {
 	 * @param codigo Codigo ASCII da letra 
 	 */
 	protected Letra(char codigo) {
+		this.setCodigo(codigo);
+	}
+	
+	private void setCodigo(char codigo) {
 		this.codigo = codigo;
 	}
 	
@@ -39,7 +43,7 @@ public abstract class Letra {
 	 * @return Hashcode do objeto
 	 */
 	public int hashCode() {
-		return codigo;
+		return this.getCodigo();
 	}
 	
 	@Override
