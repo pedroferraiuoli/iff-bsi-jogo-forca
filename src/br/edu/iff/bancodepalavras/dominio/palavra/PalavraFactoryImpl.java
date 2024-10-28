@@ -26,12 +26,6 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
         }
 	}
 	
-	/**
-	 * Obtem uma instancia unica de PalavraFactoryImpl
-	 * 
-	 * @author IvanilsoDaSilva
-	 * @return Instancia unica de PalavraFactoryImpl
-	 */
 	public static PalavraFactoryImpl getSoleInstance() {
 		if (soleInstance == null) {
             throw new IllegalStateException("A instância não foi criada. Chame createSoloInstance primeiro.");
@@ -41,6 +35,6 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
 
 	@Override
 	public Palavra getPalavra(String palavra, Tema tema) {
-		return null;
+		return Palavra.criar(this.getPalavraRepository().getProximoId(), palavra, tema);
 	}
 }

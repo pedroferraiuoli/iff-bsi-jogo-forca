@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.palavra.Palavra;
+import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 import br.edu.iff.dominio.ObjetoDominioImpl;
 
 public class Item extends ObjetoDominioImpl {
@@ -102,20 +103,24 @@ public class Item extends ObjetoDominioImpl {
 		}
 		return false;
 	}
+
+	public void exibir(Object context) {
+		this.palavra.exibir(posicoesDescobertas, context);;
+	}
+
+	boolean tentar(char codigo) {
+		int[] posicoes = palavra.tentar(codigo);
+        for (int i = 0; i < posicoes.length; i++ ) {
+            this.posicoesDescobertas[posicoes[i]] = true;
+        }
+        if(posicoes.length > 0) {
+            return true;
+        }
+        return false;
+	}
 	
 	public Palavra getPalavra() {
 		return palavra;
-	}
-	
-	boolean tentar(char codigo) {
-		boolean achou = false;
-		for (int i = 0; i < palavra.getLetras().length; i++) {
-			if (palavra.getLetras()[i].getCodigo() == Character.toUpperCase(codigo)) {
-				posicoesDescobertas[i] = true;
-				achou = true;
-			}
-		}
-		return achou;
 	}
 	
 	void arriscar(String palavra) {
@@ -127,7 +132,15 @@ public class Item extends ObjetoDominioImpl {
 	}
 	
 	public boolean acertou() {
-		return this.palavra.toString() == palavraArriscada;
+		return this.palavra.comparar(palavraArriscada);
+	}
+
+	public static Item reconstituir(long id, Palavra palavra, int[] posicoesDescobertas, String palavraArriscada) {
+		return new Item(id, palavra, posicoesDescobertas, palavraArriscada);
+	}
+
+	static Item criar(long id, Palavra palavra) {
+		return new Item(id, palavra);
 	}
 	
 }

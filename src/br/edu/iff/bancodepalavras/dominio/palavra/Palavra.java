@@ -110,7 +110,6 @@ public class Palavra extends ObjetoDominioImpl {
 				posicoes.add(i);
 			}
 		}
-		
 		return posicoes.stream().mapToInt(Integer::intValue).toArray();
 	}
 	
