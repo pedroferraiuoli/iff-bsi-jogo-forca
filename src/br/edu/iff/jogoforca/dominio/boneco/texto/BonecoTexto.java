@@ -23,15 +23,13 @@ public class BonecoTexto implements Boneco {
         return soleInstance;
 	}
 	
-	@Override
-	public Boneco getBoneco() {
-		return this.getSoleInstance();
-	}
 	
 	@Override
-	public void exibir(Object contexto, int partes) {
+	public void exibir(Object contexto, int partes) { // LEMBRAR DE COLOCAR AQUELA MERDA AQUI
 		for (int i = 0; i < partes; i++) {
 			System.out.print(this.partes[i]);
 		}
 	}
+
+
 }

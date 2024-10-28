@@ -8,7 +8,7 @@ public interface LetraFactory {
 	 * @param codigo Codigo da tabela ASCII
 	 * @return Letra encoberta buscada
 	 */
-	 public Letra getLetra(char codigo);
+	 public abstract Letra getLetra(char codigo);
 	 
 	 /**
 	  * Obtem a letra encoberta
@@ -16,5 +16,5 @@ public interface LetraFactory {
 	  * @author IvanilsoDaSilva
 	  * @return Letra encoberta
 	  */
-	 public Letra getLetraEncoberta();
+	 public abstract Letra getLetraEncoberta();
 }

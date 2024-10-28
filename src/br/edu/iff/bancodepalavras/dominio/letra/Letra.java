@@ -10,11 +10,11 @@ public abstract class Letra {
 	 * @param codigo Codigo ASCII da letra 
 	 */
 	protected Letra(char codigo) {
-		this.setCodigo(codigo);
+		this.setCodigo(codigo); 
 	}
 	
 	private void setCodigo(char codigo) {
-		this.codigo = codigo;
+		this.codigo = codigo; 
 	}
 	
 	/**
@@ -33,7 +33,10 @@ public abstract class Letra {
 	 * @author IvanilsoDaSilva
 	 * @param contexto Contexto da exibicao
 	 */
-	public abstract void exibir(Object contexto);
+	public void exibir(Object contexto) {
+		System.out.println(this.getCodigo()); 		
+		
+	}
 	
 	@Override
 	/**

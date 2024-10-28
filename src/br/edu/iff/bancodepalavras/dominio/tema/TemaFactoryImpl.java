@@ -14,7 +14,7 @@ public class TemaFactoryImpl extends EntityFactory implements TemaFactory {
 	
 	public static void createSoloInstance(TemaRepository temaRepository) {
 		if (soleInstance == null) {
-            new TemaFactoryImpl(temaRepository);
+			soleInstance = new TemaFactoryImpl(temaRepository);
         }
 	}
 	
@@ -37,6 +37,6 @@ public class TemaFactoryImpl extends EntityFactory implements TemaFactory {
 	
 	@Override
 	public Tema getTema(String nome) {
-		return null;
+		return Tema.criar(this.getTemaRepository().getProximoId(), nome);
 	}
 }

@@ -58,10 +58,49 @@ public class Item extends ObjetoDominioImpl {
 	
 	public Letra[] getLetrasEncobertas() {
 		List<Letra> letrasEncobertas = new ArrayList<Letra>();
-		for (int i = 0; i < posicoesDescobertas.length; i++) {
-			
+		for (int i = 0; i < palavra.getTamanho(); i++) {
+			if (posicoesDescobertas[i] == false) {
+				letrasEncobertas.add(this.palavra.getLetra(i));
+			}
 		}
-		return letrasEncobertas.stream().toArray(int[]);
+		return letrasEncobertas.toArray(new Letra[letrasEncobertas.size()]);
+	}
+
+	public Letra[] getLetrasDescobertas() {
+		List<Letra> letrasDescobertas = new ArrayList<Letra>();
+		for (int i = 0; i < palavra.getTamanho(); i++) {
+			if (posicoesDescobertas[i] == true) {
+				letrasDescobertas.add(this.palavra.getLetra(i));
+			}
+		}
+		return letrasDescobertas.toArray(new Letra[letrasDescobertas.size()]);
+	}
+
+	public int qtdeLetrasEncobertas() {
+		int aux = 0;
+		for (int i = 0; i < this.palavra.getTamanho(); i++) {
+			if (posicoesDescobertas[i] == false) {
+				aux++;
+			}
+		}
+		return aux;
+	}
+
+	public int calcularPontosLetrasEncobertas(int valorPorLetraEncoberta) {
+		int valor = 0;
+		for (int i = 0; i < this.palavra.getTamanho(); i++) {
+			if (posicoesDescobertas[i] == false) {
+				valor += valorPorLetraEncoberta;
+			}
+		}
+		return valor;
+	}
+
+	public boolean descobriu() {
+		if (this.acertou() || this.qtdeLetrasEncobertas() == 0) {
+			return true;
+		}
+		return false;
 	}
 	
 	public Palavra getPalavra() {
@@ -91,15 +130,4 @@ public class Item extends ObjetoDominioImpl {
 		return this.palavra.toString() == palavraArriscada;
 	}
 	
-	public Letra[] GetLetrasDescobertas() {
-		Letra[] ListaLetras;
-		ListaLetras = palavra.getLetras();
-		
-		for(int i = 0; i < palavra.getTamanho() ; i++) {
-			if(posicoesDescobertas[i] == false ) {
-				ListaLetras[i] = Palavra.getLetraFactory().getLetraEncoberta();
-			}
-		}
-		return ListaLetras; // FEITO POR CAIKE
-	}
 }
