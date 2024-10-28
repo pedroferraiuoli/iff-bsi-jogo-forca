@@ -29,6 +29,10 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 		return pool[Character.toUpperCase(codigo)-'A'];
 	}
 	
+	//public final Letra getLetra(char codigo) { -CAIKE
+	//	return this.criarLetra(codigo);
+	//};
+	
 	@Override
 	/**
 	 * Obtem a letra encoberta
