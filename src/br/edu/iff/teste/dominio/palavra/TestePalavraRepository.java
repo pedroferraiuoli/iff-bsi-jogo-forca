@@ -2,21 +2,24 @@ package br.edu.iff.teste.dominio.palavra;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import br.edu.iff.bancodepalavras.dominio.letra.texto.LetraTextoFactory;
 import br.edu.iff.bancodepalavras.dominio.palavra.Palavra;
 import br.edu.iff.bancodepalavras.dominio.palavra.emmemoria.MemoriaPalavraRepository;
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
-import br.edu.iff.bancodepalavras.dominio.tema.emmemoria.MemoriaTemaRepository;
 import br.edu.iff.repository.RepositoryException;
 
 class TestePalavraRepository {
+    @BeforeAll
+    public static void setUp() {
+		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
+    }
+	
 	@Test
     public void testeSeMemoriaPalavraRepositoryInsereNaMemoria() throws RepositoryException {
 		MemoriaPalavraRepository memoriaPalavraRepository = MemoriaPalavraRepository.getSoleInstance();
-		
-		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
 		
 		memoriaPalavraRepository.inserir(Palavra.criar(memoriaPalavraRepository.getProximoId(), "PalavraUm", Tema.criar(1, "TemaUm")));
 		memoriaPalavraRepository.inserir(Palavra.criar(memoriaPalavraRepository.getProximoId(), "PalavraUm", Tema.criar(1, "TemaUm")));
@@ -28,8 +31,6 @@ class TestePalavraRepository {
 	@Test
     public void testeSeMemoriaPalavraRepositoryRetornaDaMemoria() throws RepositoryException {
 		MemoriaPalavraRepository memoriaPalavraRepository = MemoriaPalavraRepository.getSoleInstance();
-		
-		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
 
 		memoriaPalavraRepository.inserir(Palavra.criar(memoriaPalavraRepository.getProximoId(), "PalavraUm", Tema.criar(1, "TemaUm")));
 		memoriaPalavraRepository.inserir(Palavra.criar(memoriaPalavraRepository.getProximoId(), "PalavraUm", Tema.criar(1, "TemaUm")));

@@ -40,6 +40,7 @@ public class Palavra extends ObjetoDominioImpl {
 	private void setLetras(String palavra) { // esta setando as letras como null
 		letras = new Letra[palavra.length()];
 		for (int i = 0; i<palavra.length();i++) {
+//			System.out.print(letraFactory.getLetra(palavra.charAt(i)));
 			letras[i] = letraFactory.getLetra(palavra.charAt(i));
 		}
 	}

@@ -2,6 +2,7 @@ package br.edu.iff.teste.dominio.Rodada;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import br.edu.iff.bancodepalavras.dominio.letra.texto.LetraTextoFactory;
@@ -14,12 +15,15 @@ import br.edu.iff.jogoforca.dominio.rodada.emmemoria.MemoriaRodadaRepository;
 import br.edu.iff.repository.RepositoryException;
 
 class TesteRodadaRepository {
+    @BeforeAll
+    public static void setUp() {
+		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
+		Rodada.setBonecoFactory(BonecoTextoFactory.getSoleInstance()); // NECESSARIO SETAR o BonecoFactory ANTES DE USAR;
+    }
+    
 	@Test
     public void testeSeMemoriaRodadaRepositoryInsereERetornaNaMemoria() throws RepositoryException {
 		MemoriaRodadaRepository memoriaRodadaRepository = MemoriaRodadaRepository.getSoleInstance();
-		
-		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
-		Rodada.setBonecoFactory(BonecoTextoFactory.getSoleInstance()); // NECESSARIO SETAR o BonecoFactory ANTES DE USAR;
 		
 		memoriaRodadaRepository.inserir(Rodada.criar(
 				memoriaRodadaRepository.getProximoId(),
