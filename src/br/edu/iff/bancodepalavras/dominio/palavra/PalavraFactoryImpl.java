@@ -2,6 +2,7 @@ package br.edu.iff.bancodepalavras.dominio.palavra;
 
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 import br.edu.iff.factory.EntityFactory;
+import br.edu.iff.repository.RepositoryException;
 
 public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory {
 	private static PalavraFactoryImpl soleInstance = null;
@@ -36,6 +37,11 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
 
 	@Override
 	public Palavra getPalavra(String palavra, Tema tema) {
-		return Palavra.criar(this.getPalavraRepository().getProximoId(), palavra, tema);
+		try {
+			palavraRepository.inserir(Palavra.criar(this.getPalavraRepository().getProximoId(), palavra, tema));
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+		}
+		return palavraRepository.getPalavra(palavra);
 	}
 }

@@ -1,16 +1,14 @@
 package br.edu.iff.jogoforca.dominio.jogador.emmemoria;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 import br.edu.iff.jogoforca.dominio.jogador.Jogador;
 import br.edu.iff.jogoforca.dominio.jogador.JogadorRepository;
 import br.edu.iff.repository.RepositoryException;
 
 public class MemoriaJogadorRepository implements JogadorRepository {
-
-	private List<Jogador> pool;
 	private static MemoriaJogadorRepository soleInstance;
+	private HashSet<Jogador> pool = new HashSet<Jogador>();
 	
 	public static MemoriaJogadorRepository getSoleInstance() {
 		if(soleInstance==null) {
@@ -20,7 +18,7 @@ public class MemoriaJogadorRepository implements JogadorRepository {
 	}
 	
 	private MemoriaJogadorRepository() {
-		pool = new ArrayList<Jogador>();
+		pool = new HashSet<Jogador>();
 	}
 
 	@Override

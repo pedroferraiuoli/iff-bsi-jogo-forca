@@ -32,9 +32,6 @@ class TestePalavra {
     	
     	Palavra palavra1 = palavraFactoryImpl.getPalavra("PalavraUm", Tema.criar(0, "TemaUm"));
     	Palavra palavra2 = palavraFactoryImpl.getPalavra("PalavraUm", Tema.criar(0, "TemaUm"));
-    	
-    	System.out.println(palavra1.toString());
-//    	System.out.println(palavra1.toString());
 
         assertSame(palavra1, palavra2, "As instâncias devem ser as mesmas");
     }

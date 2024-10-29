@@ -37,11 +37,10 @@ public class Palavra extends ObjetoDominioImpl {
 		letraFactory = FactoryLetra;
 	}
 	
-	private void setLetras(String palavra) { // esta setando as letras como null
+	private void setLetras(String palavra) {
 		letras = new Letra[palavra.length()];
-		for (int i = 0; i<palavra.length();i++) {
-//			System.out.print(letraFactory.getLetra(palavra.charAt(i)));
-			letras[i] = letraFactory.getLetra(palavra.charAt(i));
+		for (int i = 0; i<palavra.length();i++) {		
+			letras[i] = letraFactory.getLetra(Character.toUpperCase(palavra.charAt(i)));
 		}
 	}
 
