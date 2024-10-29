@@ -2,6 +2,8 @@ package br.edu.iff.bancodepalavras.dominio.palavra;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactory;
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
@@ -112,6 +114,22 @@ public class Palavra extends ObjetoDominioImpl {
 		}
 		return posicoes.stream().mapToInt(Integer::intValue).toArray();
 	}
+	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) 
+        	return true;
+        if (!(obj instanceof Tema)) 
+        	return false;
+        
+        Palavra outro = (Palavra) obj;
+        return Objects.equals(this.hashCode(), outro.hashCode());
+    }
+	
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.toString()+this.getTema().getNome());
+    }
 	
 	@Override
 	public String toString() {
