@@ -1,5 +1,7 @@
 package br.edu.iff.jogoforca.dominio.rodada;
 
-public class RodadaRepository {
+import br.edu.iff.repository.Repository;
+
+public interface RodadaRepository extends Repository {
     
 }
