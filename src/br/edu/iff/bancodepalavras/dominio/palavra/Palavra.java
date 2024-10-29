@@ -34,7 +34,7 @@ public class Palavra extends ObjetoDominioImpl {
 		this.tema = tema;
 	}
 
-	public void setLetraFactory(LetraFactory FactoryLetra) {
+	public static void setLetraFactory(LetraFactory FactoryLetra) {
 		letraFactory = FactoryLetra;
 	}
 	
