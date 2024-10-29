@@ -14,7 +14,7 @@ import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 class TestePalavra {
     @BeforeAll
     public static void setUp() {
-        PalavraFactoryImpl.createSoloInstance(MemoriaPalavraRepository.getSoleInstance());
+        PalavraFactoryImpl.createSoleInstance(MemoriaPalavraRepository.getSoleInstance());;
         Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
     }
 	
