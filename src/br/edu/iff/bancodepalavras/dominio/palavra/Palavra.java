@@ -76,6 +76,7 @@ public class Palavra extends ObjetoDominioImpl {
 		for (int i = 0; i < this.letras.length; i++) {
 				this.letras[i].exibir(context);			
 		}
+		System.out.println();
 	}
 	
 	public void exibir(boolean[] posicoes, Object context) {
@@ -90,6 +91,7 @@ public class Palavra extends ObjetoDominioImpl {
 				LetraEncoberta.exibir(context);
 			}
 		}
+		System.out.println();
 	}
 	
 	public boolean comparar(String palavra) {
@@ -100,14 +102,18 @@ public class Palavra extends ObjetoDominioImpl {
 			return false;
 		}
 		
-		return this.toString() == palavra;
+		//System.out.println(this.toString() + "==" + palavra);
+		
+		
+		return this.toString().equals(palavra);
 	}
 	
 	public int[] tentar(char codigo) {
 		List<Integer> posicoes = new ArrayList<>();
 		
 		for (int i=0;i<letras.length;i++) {
-			if (letras[i].getCodigo() == codigo) {
+			if (letras[i].getCodigo() == codigo){
+				//System.out.println(letras[i].getCodigo() + " = " + codigo);
 				posicoes.add(i);
 			}
 		}

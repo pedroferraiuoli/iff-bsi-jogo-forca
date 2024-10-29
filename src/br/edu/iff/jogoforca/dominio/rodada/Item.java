@@ -17,7 +17,7 @@ public class Item extends ObjetoDominioImpl {
 	private Item(long id, Palavra palavra) {
 		
 		super(id);
-		System.out.println("Construtor Basico Item Chamado");
+		//System.out.println("Construtor Basico Item Chamado");
 		this.setPalavra(palavra);
 		this.posicoesDescobertas = new boolean[palavra.getTamanho()];
 		for (int g = 0; g <palavra.getTamanho(); g++) {
@@ -28,7 +28,7 @@ public class Item extends ObjetoDominioImpl {
 	
 	private Item(long id, Palavra palavra, int[] posicoesDescobertas, String palavraArriscada) {
 		super(id);
-		System.out.println("Construtor Avançado Item Chamado");
+		//System.out.println("Construtor Avançado Item Chamado");
 		this.setPalavra(palavra);
 		this.setPosicoesDescobertas(posicoesDescobertas); 
 		this.setPalavraArriscada(palavraArriscada);
@@ -108,7 +108,7 @@ public class Item extends ObjetoDominioImpl {
 	}
 
 	public boolean descobriu() {
-		if (this.acertou() || this.qtdeLetrasEncobertas() == 0) {
+		if (this.acertou() == true || (this.qtdeLetrasEncobertas() == 0)) {
 			return true;
 		}
 		return false;
@@ -142,6 +142,7 @@ public class Item extends ObjetoDominioImpl {
 	}
 	
 	public boolean acertou() {
+		//System.out.println(this.palavra.toString() +" == "+ palavraArriscada );
 		return this.palavra.comparar(palavraArriscada);
 	}
 

@@ -23,7 +23,7 @@ public class MemoriaJogadorRepository implements JogadorRepository {
 
 	@Override
 	public long getProximoId() {
-		System.out.println("GetProximoID");
+		//System.out.println("GetProximoID");
 		return this.pool.size() + 1;
 	}
 
@@ -38,7 +38,7 @@ public class MemoriaJogadorRepository implements JogadorRepository {
 	}
 
 	@Override
-	public Jogador getPorNome(String nome) { //VERIFICAR 
+	public Jogador getPorNome(String nome) {  
 		for(Jogador jogador : this.pool) {
 			if(jogador.getNome().compareTo(nome)== 0) {
 				return jogador;

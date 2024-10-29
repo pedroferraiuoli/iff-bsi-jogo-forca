@@ -188,6 +188,7 @@ public class Rodada extends ObjetoDominioImpl {
             throw new RuntimeException("Não há itens!");
         }
         boolean encontrado = false;
+        
         for (Item item : this.itens) {
             if (item.tentar((codigo)))
             encontrado = true;
@@ -212,7 +213,7 @@ public class Rodada extends ObjetoDominioImpl {
 
     public boolean descobriu() {
         for (Item item : this.itens) {
-            if (!item.descobriu()){
+            if (item.descobriu() == false){
                 return false;
             }
         }

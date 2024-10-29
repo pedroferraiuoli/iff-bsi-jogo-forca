@@ -18,9 +18,9 @@ public class RodadaSorteioFactory extends RodadaFactoryImpl {
 
 	public static void createSoleInstance(RodadaRepository rodadaRepository, TemaRepository temaRepository, PalavraRepository palavraRepository) {
 		if (soleInstance == null) {
-			System.out.println("RodadaSorteioFactory Criada");
+			//System.out.println("RodadaSorteioFactory Criada");
             soleInstance = new RodadaSorteioFactory(rodadaRepository, temaRepository, palavraRepository);
-            System.out.println("RodadaSorteioFactory Criada Com Sucesso");
+            //System.out.println("RodadaSorteioFactory Criada Com Sucesso");
         }
 	}
 	

@@ -30,7 +30,7 @@ public class Main {
 	}
 
 	public static void definirTemas(TemaRepository temas, TemaFactory temaFactory) {
-		String[] listaDeTemas = { "Cores", "Roupas", "Animais", "Comida" };
+		String[] listaDeTemas = { "Veiculos", "Instrumentos Mus.", "Ferramenta", "Pais" };
 		for (String tema : listaDeTemas) {
 			try {
 				temas.inserir(temaFactory.getTema(tema));
@@ -39,23 +39,23 @@ public class Main {
 			}
 		}
 
-		String[] palavrasCores = { "azul", "vermelho", "verde", "branco", "roxo", "laranja", "amarelo" };
-		for (String palavra : palavrasCores) {
+		String[] palavrasVeiculos = { "carro", "moto", "caminhao", "foguete", "barco", "navio"};
+		for (String palavra : palavrasVeiculos) {
 			PalavraAppService.getSoleInstance().novaPalavra(palavra,
 					temas.getPorNome(listaDeTemas[0])[0].getId());
 		}
-		String[] palavrasRoupas = { "camisa", "jaleco", "moletom", "vestido", "sobretudo" };
-		for (String palavra : palavrasRoupas) {
+		String[] palavrasInstrumentos = { "bateria", "baixo", "piano", "guitarra", "pandero" };
+		for (String palavra : palavrasInstrumentos) {
 			PalavraAppService.getSoleInstance().novaPalavra(palavra,
 					temas.getPorNome(listaDeTemas[1])[0].getId());
 		}
-		String[] palavrasAnimais = { "cachorro", "gato", "peixe", "coelho", "passaro", "cavalo" };
-		for (String palavra : palavrasAnimais) {
+		String[] palavrasFerramentas = { "martelo", "serra", "alicate", "parafusadeira", "trena" };
+		for (String palavra : palavrasFerramentas) {
 			PalavraAppService.getSoleInstance().novaPalavra(palavra,
 					temas.getPorNome(listaDeTemas[2])[0].getId());
 		}
-		String[] palavrasComida = { "arroz", "feijao", "macarrao", "batata", "alface" };
-		for (String palavra : palavrasComida) {
+		String[] palavrasPais = { "brasil", "chile", "espanha", "portugal", "japao" };
+		for (String palavra : palavrasPais) {
 			PalavraAppService.getSoleInstance().novaPalavra(palavra,
 					temas.getPorNome(listaDeTemas[3])[0].getId());
 		}
@@ -63,9 +63,9 @@ public class Main {
 
 	public static void jogar(JogadorRepository jogadores, JogadorFactory jogadorFactory)
 			throws RepositoryException, JogadorNaoEncontradoException {
-		System.out.println("3");
+		//System.out.println("3");
 		Rodada partida = RodadaAppService.getSoleInstance().novaRodada(obterJogadorDaRodada(jogadores, jogadorFactory));
-		System.out.println("3");
+		//System.out.println("3");
 		Scanner entrada = new Scanner(System.in);
 		Object contexto = null;
 		String escolha;
@@ -82,10 +82,10 @@ public class Main {
 					arriscar(partida, palavrasArriscadas);
 					break;
 				default:
-					System.out.println("<<Escolha inválida>>");
+					System.out.println("Escolha inválida");
 					break;
 			}
-			System.out.println("===============================");
+			System.out.println("+++++++++++++++++++++++++++++");
 		} while (!partida.encerrou());
 		encerrar(partida, contexto);
 		RodadaAppService.getSoleInstance().salvarRodada(partida);
@@ -100,9 +100,9 @@ public class Main {
 		System.out.println("Informe seu nome: ");
 		String nomeJogador = entrada.nextLine();
 		System.out.println();
-		System.out.println("Inserindo");
+		//System.out.println("Inserindo");
 		jogadores.inserir(jogadorFactory.getJogador(nomeJogador));
-		System.out.println("Inseriu");
+		//System.out.println("Inseriu");
 		return nomeJogador;
 	}
 
@@ -119,7 +119,7 @@ public class Main {
 	public static void arriscar(Rodada partida, String[] palavrasArriscadas) {
 		@SuppressWarnings("resource")
 		Scanner entrada = new Scanner(System.in);
-		System.out.println("## Arriscar ##");
+		System.out.println("Arriscando!");
 		System.out.println("Digite as palavras:");
 		for (int posicaoAtual = 0; posicaoAtual < palavrasArriscadas.length; posicaoAtual++) {
 			System.out.print((posicaoAtual + 1) + "ª palavra: ");
@@ -131,22 +131,25 @@ public class Main {
 	public static void tentar(Rodada partida) {
 		@SuppressWarnings("resource")
 		Scanner entrada = new Scanner(System.in);
-		System.out.println("## Tentar ##");
+		System.out.println(" Tentando!");
 		System.out.println("Número de tentativas restantes: " + partida.getQtdeTentativasRestantes());
 		System.out.print("Digite a letra:");
 		char letraTentada = entrada.nextLine().charAt(0);
-		if (!(letraTentada >= 'a' && letraTentada <= 'z')) {
-			System.out.println("<<Letra inválida>>");
+		if (!(letraTentada >= 'A' && letraTentada <= 'Z')) {
+			System.out.println("Letra inválida");
 		} else {
 			partida.tentar(letraTentada);
 		}
 	}
 
 	public static void encerrar(Rodada partida, Object contexto) {
-		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-		if (partida.descobriu()) {
+		System.out.println("---------------------------------");
+		//System.out.println("1");
+		if (partida.descobriu() == true) {
+			//System.out.println("2");
 			mostrarResultadoVitoria(partida);
 		} else {
+			//System.out.println("3");
 			mostrarResultadoDerrota(partida, contexto);
 		}
 		System.out.println();
@@ -161,11 +164,13 @@ public class Main {
 	}
 
 	public static void mostrarResultadoDerrota(Rodada partida, Object contexto) {
+		
 		System.out.println("O Jogador " + partida.getJogador().getNome() + " perdeu!");
 		System.out.println("Número de tentativas: " + partida.getQtdeTentativas());
 		System.out.println("Número de acertos: " + partida.getQtdeAcertos());
 		System.out.println("Palavras:");
 		partida.exibirPalavras(contexto);
+		Rodada.getBonecoFactory().getBoneco().exibir(contexto, 10);;
 	}
 
 }
