@@ -18,7 +18,9 @@ public class Main {
 
 	public static void main(String[] args) throws RepositoryException, JogadorNaoEncontradoException {
 		Aplicacao app = Aplicacao.getSoleInstance();
+		//System.out.println("1");
 		app.configurar();
+		//System.out.println("2");
 		TemaRepository temas = app.getRepositoryFactory().getTemaRepository();
 		JogadorRepository jogadores = app.getRepositoryFactory().getJogadorRepository();
 		JogadorFactory jogadorFactory = app.getJogadorFactory();
@@ -61,8 +63,9 @@ public class Main {
 
 	public static void jogar(JogadorRepository jogadores, JogadorFactory jogadorFactory)
 			throws RepositoryException, JogadorNaoEncontradoException {
-		
+		System.out.println("3");
 		Rodada partida = RodadaAppService.getSoleInstance().novaRodada(obterJogadorDaRodada(jogadores, jogadorFactory));
+		System.out.println("3");
 		Scanner entrada = new Scanner(System.in);
 		Object contexto = null;
 		String escolha;
@@ -97,8 +100,9 @@ public class Main {
 		System.out.println("Informe seu nome: ");
 		String nomeJogador = entrada.nextLine();
 		System.out.println();
-
+		System.out.println("Inserindo");
 		jogadores.inserir(jogadorFactory.getJogador(nomeJogador));
+		System.out.println("Inseriu");
 		return nomeJogador;
 	}
 

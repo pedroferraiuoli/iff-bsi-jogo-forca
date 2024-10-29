@@ -14,9 +14,9 @@ public class JogadorFactoryImpl extends EntityFactory implements JogadorFactory 
 		return this.jogadorRepository;
 	}
 
-	public static void createSoloInstance(JogadorRepository jogadorRepository) {
+	public static void createSoleInstance(JogadorRepository jogadorRepository) {
 		if (soleInstance == null) {
-            new JogadorFactoryImpl(jogadorRepository);
+			soleInstance = new JogadorFactoryImpl(jogadorRepository);
         }
 	}
 	
@@ -29,6 +29,9 @@ public class JogadorFactoryImpl extends EntityFactory implements JogadorFactory 
 
 	@Override
 	public Jogador getJogador(String nome) {
-		return Jogador.criar(this.getJogadorRepository().getProximoId(), nome);
+		System.out.println("8");
+		Jogador Jog = Jogador.criar(this.getJogadorRepository().getProximoId(), nome);
+		System.out.println(Jog.toString() + "1");
+		return Jog;
 	}
 }

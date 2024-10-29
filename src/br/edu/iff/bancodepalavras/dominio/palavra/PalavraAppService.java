@@ -12,7 +12,7 @@ public class PalavraAppService {
     private TemaRepository temaRepository;
     private PalavraFactory palavraFactory;
 
-    public static void createSoloInstance(TemaRepository temaRepository, PalavraRepository palavraRepository, PalavraFactory palavraFactory) {
+    public static void createSoleInstance(TemaRepository temaRepository, PalavraRepository palavraRepository, PalavraFactory palavraFactory) {
         if (soleInstance == null) {
             soleInstance = new PalavraAppService(palavraRepository, temaRepository, palavraFactory);
         }

@@ -14,21 +14,23 @@ public class RodadaSorteioFactory extends RodadaFactoryImpl {
 		super(rodadaRepository, temaRepository, palavraRepository);
 	}
 
-	public static void createSoloInstance(RodadaRepository rodadaRepository, TemaRepository temaRepository, PalavraRepository palavraRepository) {
+	public static void createSoleInstance(RodadaRepository rodadaRepository, TemaRepository temaRepository, PalavraRepository palavraRepository) {
 		if (soleInstance == null) {
-            new RodadaSorteioFactory(rodadaRepository, temaRepository, palavraRepository);
+			System.out.println("RodadaSorteioFactory Criada");
+            soleInstance = new RodadaSorteioFactory(rodadaRepository, temaRepository, palavraRepository);
+            System.out.println("RodadaSorteioFactory Criada Com Sucesso");
         }
 	}
 	
 	public static RodadaSorteioFactory getSoleInstance() {
 		if (soleInstance == null) {
-            throw new IllegalStateException("A instância não foi criada. Chame createSoloInstance primeiro.");
+            throw new IllegalStateException("A instância não foi criada. Chame createSoloInstance primeiro 34.");
         }
         return soleInstance;
 	}
 
 	@Override
-	public Rodada getRodada(Jogador jogador) {
+	public Rodada getRodada(Jogador jogador) {//VER DEPOIS NAO ESTÁ PRONTO
 		return Rodada.criar(
 				this.getRodadaRepository().getProximoId(),
 				this.getPalavraRepository().getPorTema(this.getTemaRepository().getPorId(0)), //adicionar para pegar o array de palavras e o tema aleatorio
