@@ -1,5 +1,7 @@
 package br.edu.iff.bancodepalavras.dominio.letra;
 
+import java.util.Objects;
+
 public abstract class Letra {
 	private char codigo;
 	
@@ -46,7 +48,7 @@ public abstract class Letra {
 	 * @return Hashcode do objeto
 	 */
 	public int hashCode() {
-		return this.getCodigo();
+		return Objects.hash(this.toString());
 	}
 	
 	@Override
@@ -60,15 +62,14 @@ public abstract class Letra {
 		return Character.toString(codigo);
 	}
 	
-	@Override
-	/**
-	 * Verifica se os objetos são iguais
-	 * 
-	 * @author IvanilsoDaSilva
-	 * @param o Objeto a ser comparado
-	 * @return Se são iguais
-	 */
-	public boolean equals(Object obj) {
-		return this == obj;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) 
+        	return true;
+        if (!(obj instanceof Letra)) 
+        	return false;
+        
+        Letra outro = (Letra) obj;
+        return Objects.equals(this.hashCode(), outro.hashCode());
+    }
 }

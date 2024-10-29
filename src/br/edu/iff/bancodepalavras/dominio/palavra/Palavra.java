@@ -2,6 +2,8 @@ package br.edu.iff.bancodepalavras.dominio.palavra;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactory;
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
@@ -13,7 +15,6 @@ public class Palavra extends ObjetoDominioImpl {
 	private Tema tema;
 	private Letra[] letras;
 
-	
 	private Palavra(long id, String palavra, Tema tema) {
 		super(id);
 		
@@ -32,14 +33,14 @@ public class Palavra extends ObjetoDominioImpl {
 		this.tema = tema;
 	}
 
-	public void setLetraFactory(LetraFactory FactoryLetra) {
+	public static void setLetraFactory(LetraFactory FactoryLetra) {
 		letraFactory = FactoryLetra;
 	}
 	
 	private void setLetras(String palavra) {
 		letras = new Letra[palavra.length()];
-		for (int i = 0; i<palavra.length();i++) {
-			letras[i] = letraFactory.getLetra(palavra.charAt(i));
+		for (int i = 0; i<palavra.length();i++) {		
+			letras[i] = letraFactory.getLetra(Character.toUpperCase(palavra.charAt(i)));
 		}
 	}
 
@@ -75,6 +76,7 @@ public class Palavra extends ObjetoDominioImpl {
 		for (int i = 0; i < this.letras.length; i++) {
 				this.letras[i].exibir(context);			
 		}
+		System.out.println();
 	}
 	
 	public void exibir(boolean[] posicoes, Object context) {
@@ -89,6 +91,7 @@ public class Palavra extends ObjetoDominioImpl {
 				LetraEncoberta.exibir(context);
 			}
 		}
+		System.out.println();
 	}
 	
 	public boolean comparar(String palavra) {
@@ -99,20 +102,39 @@ public class Palavra extends ObjetoDominioImpl {
 			return false;
 		}
 		
-		return this.toString() == palavra;
+		//System.out.println(this.toString() + "==" + palavra);
+		
+		
+		return this.toString().equals(palavra);
 	}
 	
 	public int[] tentar(char codigo) {
 		List<Integer> posicoes = new ArrayList<>();
 		
 		for (int i=0;i<letras.length;i++) {
-			if (letras[i].getCodigo() == codigo) {
+			if (letras[i].getCodigo() == codigo){
+				//System.out.println(letras[i].getCodigo() + " = " + codigo);
 				posicoes.add(i);
 			}
 		}
-		
 		return posicoes.stream().mapToInt(Integer::intValue).toArray();
 	}
+	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) 
+        	return true;
+        if (!(obj instanceof Palavra)) 
+        	return false;
+        
+        Palavra outro = (Palavra) obj;
+        return Objects.equals(this.hashCode(), outro.hashCode());
+    }
+	
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.toString()+":"+this.getTema().getNome());
+    }
 	
 	@Override
 	public String toString() {

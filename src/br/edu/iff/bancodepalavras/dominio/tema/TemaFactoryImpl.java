@@ -12,18 +12,12 @@ public class TemaFactoryImpl extends EntityFactory implements TemaFactory {
 		this.temaRepository = temaRepository;
 	}
 	
-	public static void createSoloInstance(TemaRepository temaRepository) {
+	public static void createSoleInstance(TemaRepository temaRepository) {
 		if (soleInstance == null) {
 			soleInstance = new TemaFactoryImpl(temaRepository);
         }
 	}
-	
-	/**
-	 * Obtem uma instancia unica de TemaFactoryImpl
-	 * 
-	 * @author IvanilsoDaSilva
-	 * @return Instancia unica de TemaFactoryImpl
-	 */
+
 	public static TemaFactoryImpl getSoleInstance() {
 		if (soleInstance == null) {
             throw new IllegalStateException("A instância não foi criada. Chame createSoloInstance primeiro.");

@@ -13,7 +13,7 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 */
 	private LetraTextoFactory() {
 		super();
-		this.encoberta = new LetraTexto('_');
+		this.encoberta = new LetraTexto('*');
 	}
 	
 
