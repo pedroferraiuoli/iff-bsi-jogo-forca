@@ -2,6 +2,7 @@ package br.edu.iff.bancodepalavras.dominio.tema;
 
 import java.util.Objects;
 
+import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.dominio.ObjetoDominioImpl;
 
 public class Tema extends ObjetoDominioImpl {
@@ -41,6 +42,11 @@ public class Tema extends ObjetoDominioImpl {
 	
     @Override
     public int hashCode() {
-        return Objects.hash(this.getNome());
+        return Objects.hash(this.toString());
     }
+    
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 }

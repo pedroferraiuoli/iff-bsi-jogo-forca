@@ -10,8 +10,22 @@ import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 import br.edu.iff.repository.RepositoryException;
 
 public class MemoriaPalavraRepository implements PalavraRepository {
-	private static MemoriaPalavraRepository soloInstance = null;
+	private static MemoriaPalavraRepository soleInstance = null;
 	private HashSet<Palavra> pool = new HashSet<Palavra>();
+	
+	/**
+	 * Obtem uma instancia unica de MemoriaRepositoryFactory
+	 * 
+	 * @author IvanilsoDaSilva
+	 * @return Instancia unica de MemoriaRepositoryFactory
+	 */
+	public static MemoriaPalavraRepository getSoleInstance() {
+        if (soleInstance == null) {
+        	soleInstance = new MemoriaPalavraRepository();
+			return soleInstance;
+        }
+        return soleInstance;
+	}
 
 	private HashSet<Palavra> getPool(){
 		return this.pool;
@@ -50,20 +64,17 @@ public class MemoriaPalavraRepository implements PalavraRepository {
 
 	@Override
 	public Palavra[] getTodas() {
-		// TODO Auto-generated method stub
-		return null;
+		return pool.toArray(new Palavra[pool.size()]);
 	}
 
 	@Override
 	public Palavra getPalavra(String palavra) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void inserir(Palavra palavra) throws RepositoryException {
-		// TODO Auto-generated method stub
-		
+		this.getPool().add(palavra);
 	}
 
 	@Override
