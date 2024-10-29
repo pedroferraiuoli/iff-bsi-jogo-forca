@@ -15,12 +15,20 @@ public class Item extends ObjetoDominioImpl {
 	private Palavra palavra;
 	
 	private Item(long id, Palavra palavra) {
+		
 		super(id);
+		System.out.println("Construtor Basico Item Chamado");
 		this.setPalavra(palavra);
+		this.posicoesDescobertas = new boolean[palavra.getTamanho()];
+		for (int g = 0; g <palavra.getTamanho(); g++) {
+			this.posicoesDescobertas[g] = false;
+		}
+		
 	}
 	
 	private Item(long id, Palavra palavra, int[] posicoesDescobertas, String palavraArriscada) {
 		super(id);
+		System.out.println("Construtor Avançado Item Chamado");
 		this.setPalavra(palavra);
 		this.setPosicoesDescobertas(posicoesDescobertas); 
 		this.setPalavraArriscada(palavraArriscada);
@@ -34,6 +42,8 @@ public class Item extends ObjetoDominioImpl {
 	}
 	
 	private void setPosicoesDescobertas(int[] posicoesDescobertasInt) {
+		
+		System.out.println("setPosicoesDescobertas");
 		if(posicoesDescobertasInt == null) {
 			throw new NullPointerException("O vetor com as posições descobertas é nulo");
 		}
