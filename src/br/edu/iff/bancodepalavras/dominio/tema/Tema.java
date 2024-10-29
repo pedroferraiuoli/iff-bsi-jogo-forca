@@ -1,5 +1,7 @@
 package br.edu.iff.bancodepalavras.dominio.tema;
 
+import java.util.Objects;
+
 import br.edu.iff.dominio.ObjetoDominioImpl;
 
 public class Tema extends ObjetoDominioImpl {
@@ -25,4 +27,20 @@ public class Tema extends ObjetoDominioImpl {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) 
+        	return true;
+        if (!(obj instanceof Tema)) 
+        	return false;
+        
+        Tema outro = (Tema) obj;
+        return Objects.equals(this.hashCode(), outro.hashCode());
+    }
+	
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getNome());
+    }
 }
