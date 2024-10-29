@@ -42,16 +42,23 @@ public class Aplicacao {
 	}
 	
 	public void configurar() {
-		RodadaSorteioFactory.createSoloInstance(this.getRepositoryFactory().getRodadaRepository(), this.getRepositoryFactory().getTemaRepository(), this.getRepositoryFactory().getPalavraRepository());
-		TemaFactoryImpl.createSoloInstance(this.getRepositoryFactory().getTemaRepository());
-		PalavraFactoryImpl.createSoloInstance(this.getRepositoryFactory().getPalavraRepository());
-		JogadorFactoryImpl.createSoloInstance(this.getRepositoryFactory().getJogadorRepository());
+		//System.out.println("2");
+		RodadaSorteioFactory.createSoleInstance(this.getRepositoryFactory().getRodadaRepository(), this.getRepositoryFactory().getTemaRepository(), this.getRepositoryFactory().getPalavraRepository());	
+		//System.out.println("3");
+		TemaFactoryImpl.createSoleInstance(this.getRepositoryFactory().getTemaRepository());
+		//System.out.println("4");
+		PalavraFactoryImpl.createSoleInstance(this.getRepositoryFactory().getPalavraRepository());
+		//System.out.println("5");
+		JogadorFactoryImpl.createSoleInstance(this.getRepositoryFactory().getJogadorRepository());
+		//System.out.println("6");
 		
 		Palavra.setLetraFactory(this.getLetraFactory());
 		Rodada.setBonecoFactory(this.getBonecoFactory());
-		
-		PalavraAppService.createSoloInstance(this.getRepositoryFactory().getTemaRepository(), this.getRepositoryFactory().getPalavraRepository(), this.getPalavraFactory());
-		RodadaAppService.createSoloInstance(this.getRepositoryFactory().getRodadaRepository(), this.getRepositoryFactory().getJogadorRepository(), this.getRodadaFactory());
+		//System.out.println("7");
+		PalavraAppService.createSoleInstance(this.getRepositoryFactory().getTemaRepository(), this.getRepositoryFactory().getPalavraRepository(), this.getPalavraFactory());
+		//System.out.println("8");
+		RodadaAppService.createSoleInstance(this.getRepositoryFactory().getRodadaRepository(), this.getRepositoryFactory().getJogadorRepository(), this.getRodadaFactory());
+		//System.out.println("9");
 		
 	}
 	

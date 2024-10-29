@@ -12,7 +12,7 @@ public class TemaFactoryImpl extends EntityFactory implements TemaFactory {
 		this.temaRepository = temaRepository;
 	}
 	
-	public static void createSoloInstance(TemaRepository temaRepository) {
+	public static void createSoleInstance(TemaRepository temaRepository) {
 		if (soleInstance == null) {
 			soleInstance = new TemaFactoryImpl(temaRepository);
         }
