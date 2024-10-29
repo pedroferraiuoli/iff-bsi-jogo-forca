@@ -6,9 +6,11 @@ import br.edu.iff.jogoforca.dominio.jogador.Jogador;
 import br.edu.iff.jogoforca.dominio.rodada.Rodada;
 import br.edu.iff.jogoforca.dominio.rodada.RodadaFactoryImpl;
 import br.edu.iff.jogoforca.dominio.rodada.RodadaRepository;
+import java.util.Random;
 
 public class RodadaSorteioFactory extends RodadaFactoryImpl {
 	private static RodadaSorteioFactory soleInstance = null;
+	Random random = new Random();
 	
 	private RodadaSorteioFactory(RodadaRepository rodadaRepository, TemaRepository temaRepository, PalavraRepository palavraRepository) {
 		super(rodadaRepository, temaRepository, palavraRepository);
@@ -33,7 +35,7 @@ public class RodadaSorteioFactory extends RodadaFactoryImpl {
 	public Rodada getRodada(Jogador jogador) {//VER DEPOIS NAO ESTÁ PRONTO
 		return Rodada.criar(
 				this.getRodadaRepository().getProximoId(),
-				this.getPalavraRepository().getPorTema(this.getTemaRepository().getPorId(0)), //adicionar para pegar o array de palavras e o tema aleatorio
+				this.getPalavraRepository().getPorTema(this.getTemaRepository().getPorId(random.nextInt(this.getTemaRepository().getTodos().length)+1)), //adicionar para pegar o array de palavras e o tema aleatorio
 				jogador
 		);
 	}
