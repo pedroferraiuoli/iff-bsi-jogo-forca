@@ -21,9 +21,10 @@ public class PalavraFactoryImpl extends EntityFactory implements PalavraFactory 
 	}
 
 	public static void createSoloInstance(PalavraRepository palavraRepository) {
-		if (soleInstance == null) {
-            new PalavraFactoryImpl(palavraRepository);
+		if (soleInstance != null) {
+			throw new IllegalStateException("A instância já foi criada");
         }
+		soleInstance = new PalavraFactoryImpl(palavraRepository);
 	}
 	
 	public static PalavraFactoryImpl getSoleInstance() {
