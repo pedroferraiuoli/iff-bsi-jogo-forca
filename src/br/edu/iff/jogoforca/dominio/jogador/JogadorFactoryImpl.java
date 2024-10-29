@@ -8,6 +8,7 @@ public class JogadorFactoryImpl extends EntityFactory implements JogadorFactory 
 	
 	private JogadorFactoryImpl(JogadorRepository jogadorRepository) {
 		super(jogadorRepository);
+		this.jogadorRepository = jogadorRepository;
 	}
 	
 	private JogadorRepository getJogadorRepository() {
@@ -29,9 +30,7 @@ public class JogadorFactoryImpl extends EntityFactory implements JogadorFactory 
 
 	@Override
 	public Jogador getJogador(String nome) {
-		System.out.println("8");
 		Jogador Jog = Jogador.criar(this.getJogadorRepository().getProximoId(), nome);
-		System.out.println(Jog.toString() + "1");
 		return Jog;
 	}
 }

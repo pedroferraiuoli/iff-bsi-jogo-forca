@@ -39,17 +39,18 @@ public class MemoriaTemaRepository implements TemaRepository {
 
 	@Override
 	public Tema getPorId(long id) {
-		if (id < 1)
-			throw new IllegalArgumentException("O argumento não pode ser menor que zero");
-		Tema[] novoArray = pool.toArray(new Tema[0]);
+		if (id < 0)
+			throw new IllegalArgumentException("O argumento não pode ser menor que zerodwa");
+		//Tema[] novoArray = pool.toArray(new Tema[0]);
 	    
-	    for (Tema tema : novoArray) {
-	        if (tema.getId() == id) {
-	            return tema;
-	        }
-	    }
-	    
-	    return null;
+		for(Tema tema : this.pool) {
+            if(tema.getId() == id) {
+                return tema;
+            }
+        }
+		System.out.println("Retornando null");
+        return null;
+    
 	}
 
 	@Override

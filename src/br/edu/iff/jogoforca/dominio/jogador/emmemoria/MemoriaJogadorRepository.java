@@ -23,6 +23,7 @@ public class MemoriaJogadorRepository implements JogadorRepository {
 
 	@Override
 	public long getProximoId() {
+		System.out.println("GetProximoID");
 		return this.pool.size() + 1;
 	}
 
