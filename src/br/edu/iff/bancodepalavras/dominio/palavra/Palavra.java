@@ -15,7 +15,6 @@ public class Palavra extends ObjetoDominioImpl {
 	private Tema tema;
 	private Letra[] letras;
 
-	
 	private Palavra(long id, String palavra, Tema tema) {
 		super(id);
 		
@@ -119,7 +118,7 @@ public class Palavra extends ObjetoDominioImpl {
     public boolean equals(Object obj) {
         if (this == obj) 
         	return true;
-        if (!(obj instanceof Tema)) 
+        if (!(obj instanceof Palavra)) 
         	return false;
         
         Palavra outro = (Palavra) obj;
@@ -128,7 +127,7 @@ public class Palavra extends ObjetoDominioImpl {
 	
     @Override
     public int hashCode() {
-        return Objects.hash(this.toString()+this.getTema().getNome());
+        return Objects.hash(this.toString()+":"+this.getTema().getNome());
     }
 	
 	@Override
