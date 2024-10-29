@@ -3,6 +3,7 @@ package br.edu.iff.jogoforca.dominio.rodada;
 import br.edu.iff.bancodepalavras.dominio.tema.Tema;
 import br.edu.iff.bancodepalavras.dominio.tema.TemaRepository;
 import br.edu.iff.jogoforca.dominio.jogador.Jogador;
+import br.edu.iff.jogoforca.dominio.jogador.JogadorNaoEncontradoException;
 import br.edu.iff.jogoforca.dominio.jogador.JogadorRepository;
 import br.edu.iff.repository.RepositoryException;
 
@@ -46,7 +47,7 @@ public class RodadaAppService {
     public Rodada novaRodada(String nomeJogador) throws JogadorNaoEncontradoException {
         Jogador jogador = this.jogadorRepository.getPorNome(nomeJogador);
         if (jogador == null) {
-            new RuntimeException("O ID não é correspondente a um jogador no repositório jogador!");
+            new JogadorNaoEncontradoException("Nome jogador:"+nomeJogador);
         }
         return this.rodadaFactory.getRodada(jogador);
     }
@@ -57,7 +58,12 @@ public class RodadaAppService {
 
     public boolean salvarRodada(Rodada rodada) {
         try {
-            this.rodadaRepository.
+            this.rodadaRepository.inserir(rodada);
+            return true;
+        }
+        catch (RepositoryException e) {
+            System.out.println("Erro ao inserir rodada no repositório!");
+            return false;
         }
     }
 
