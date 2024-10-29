@@ -39,6 +39,8 @@ public class MemoriaTemaRepository implements TemaRepository {
 
 	@Override
 	public Tema getPorId(long id) {
+		if (id < 1)
+			throw new IllegalArgumentException("O argumento não pode ser menor que zero");
 		Tema[] novoArray = pool.toArray(new Tema[0]);
 	    
 	    for (Tema tema : novoArray) {
@@ -52,6 +54,8 @@ public class MemoriaTemaRepository implements TemaRepository {
 
 	@Override
 	public Tema[] getPorNome(String nome) {
+		if (nome == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
 	    List<Tema> temasEncontrados = new ArrayList<>();
 	    
 	    for (Tema tema : pool) {
@@ -70,16 +74,22 @@ public class MemoriaTemaRepository implements TemaRepository {
 
 	@Override
 	public void inserir(Tema tema) throws RepositoryException {
+		if (tema == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
 		this.getPool().add(tema);
 	}
 
 	@Override
 	public void atualizar(Tema tema) throws RepositoryException {
+		if (tema == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
 		this.getPool().add(tema);
-		}
+	}
 
 	@Override
 	public void remover(Tema tema) throws RepositoryException {
+		if (tema == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
 		this.getPool().remove(tema);
 	}
 }

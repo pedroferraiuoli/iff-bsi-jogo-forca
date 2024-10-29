@@ -13,7 +13,7 @@ import br.edu.iff.repository.RepositoryException;
 
 class TestePalavraRepository {
 	@Test
-    public void testeSeMemoriaPalavraRepositoryInsereTemaNaMemoria() throws RepositoryException {
+    public void testeSeMemoriaPalavraRepositoryInsereNaMemoria() throws RepositoryException {
 		MemoriaPalavraRepository memoriaPalavraRepository = MemoriaPalavraRepository.getSoleInstance();
 		
 		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
@@ -26,11 +26,10 @@ class TestePalavraRepository {
     }
 	
 	@Test
-    public void testeSeMemoriaPalavraRepositoryRetornaValorDaMemoria() throws RepositoryException {
+    public void testeSeMemoriaPalavraRepositoryRetornaDaMemoria() throws RepositoryException {
 		MemoriaPalavraRepository memoriaPalavraRepository = MemoriaPalavraRepository.getSoleInstance();
 		
 		Palavra.setLetraFactory(LetraTextoFactory.getSoleInstance()); // NECESSARIO SETAR o LetraFactory ANTES DE USAR;
-
 
 		memoriaPalavraRepository.inserir(Palavra.criar(memoriaPalavraRepository.getProximoId(), "PalavraUm", Tema.criar(1, "TemaUm")));
 		memoriaPalavraRepository.inserir(Palavra.criar(memoriaPalavraRepository.getProximoId(), "PalavraUm", Tema.criar(1, "TemaUm")));
@@ -38,10 +37,8 @@ class TestePalavraRepository {
 		
 		Palavra palavra1 = memoriaPalavraRepository.getPorId(1);
 		Palavra[] palavras2 = memoriaPalavraRepository.getPorTema(Tema.criar(1, "TemaUm"));
-		
-		System.out.println(palavras2.length);
     	
-        assertSame(palavra1.getTema().getNome(), "TemaUm", "O nome do tema1 deve ser igual a 'TemaUm'");
+        assertSame(palavra1.getTema().getNome(), "TemaUm", "O nome do tema de palavra1 deve ser igual a 'TemaUm'");
         assertSame(palavras2.length, 1, "O tamanho do array deve ser 1");
     }
 }

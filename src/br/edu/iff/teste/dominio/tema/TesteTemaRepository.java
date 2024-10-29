@@ -10,7 +10,7 @@ import br.edu.iff.repository.RepositoryException;
 
 class TesteTemaRepository {
 	@Test
-    public void testeSeMemoriaTemaRepositoryInsereTemaNaMemoria() throws RepositoryException {
+    public void testeSeMemoriaTemaRepositoryInsereNaMemoria() throws RepositoryException {
 		MemoriaTemaRepository memoriaTemaRepository = MemoriaTemaRepository.getSoleInstance();
 		
 		memoriaTemaRepository.inserir(Tema.criar(memoriaTemaRepository.getProximoId(), "TesteUm"));
@@ -21,13 +21,17 @@ class TesteTemaRepository {
     }
 	
 	@Test
-    public void testeSeMemoriaTemaRepositoryRetornaValorDaMemoria() throws RepositoryException {
+    public void testeSeMemoriaTemaRepositoryRetornaDaMemoria() throws RepositoryException {
 		MemoriaTemaRepository memoriaTemaRepository = MemoriaTemaRepository.getSoleInstance();
+		
+		memoriaTemaRepository.inserir(Tema.criar(memoriaTemaRepository.getProximoId(), "TesteUm"));
+		memoriaTemaRepository.inserir(Tema.criar(memoriaTemaRepository.getProximoId(), "TesteUm"));
+		memoriaTemaRepository.inserir(Tema.criar(memoriaTemaRepository.getProximoId(), "TesteDois"));
 		
 		Tema tema1 = memoriaTemaRepository.getPorId(1);
 		Tema[] temas2 = memoriaTemaRepository.getPorNome("TesteDois");
     	
-        assertSame(tema1.getNome(), "TesteUm", "O nome do tema1 deve ser igual a 'Teste1'");
+        assertSame(tema1.getNome(), "TesteUm", "O nome do tema1 deve ser igual a 'TesteUm'");
         assertSame(temas2.length, 1, "O tamanho do array deve ser 1");
     }
 }

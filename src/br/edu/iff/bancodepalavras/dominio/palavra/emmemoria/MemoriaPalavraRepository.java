@@ -38,6 +38,8 @@ public class MemoriaPalavraRepository implements PalavraRepository {
 
 	@Override
 	public Palavra getPorId(long id) {
+		if (id < 1)
+			throw new IllegalArgumentException("O argumento não pode ser menor que zero");
 		Palavra[] novoArray = pool.toArray(new Palavra[0]);
 	    
 	    for (Palavra palavra : novoArray) {
@@ -51,8 +53,10 @@ public class MemoriaPalavraRepository implements PalavraRepository {
 
 	@Override
 	public Palavra[] getPorTema(Tema tema) {
+		if (tema == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
 		List<Palavra> palavrasEncontradas = new ArrayList<>();
-	    
+		
 	    for (Palavra palavra : pool) {
 	        if (palavra.getTema().equals(tema)) {
 	        	palavrasEncontradas.add(palavra);
@@ -68,24 +72,36 @@ public class MemoriaPalavraRepository implements PalavraRepository {
 	}
 
 	@Override
-	public Palavra getPalavra(String palavra) {
-		return null;
+	public Palavra getPalavra(String nome) {
+		if (nome == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
+	    for (Palavra palavra : pool) {
+	        if (palavra.toString().equalsIgnoreCase(nome)) {
+	            return palavra;
+	        }
+	    }
+	    return null;
 	}
 
 	@Override
 	public void inserir(Palavra palavra) throws RepositoryException {
+		if (palavra == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
 		this.getPool().add(palavra);
 	}
 
 	@Override
-	public void atualizar(Palavra palavra) throws RepositoryException {
-		// TODO Auto-generated method stub
-		
+    public void atualizar(Palavra palavra) throws RepositoryException {
+		if (palavra == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
+		this.getPool().remove(palavra);
+		this.getPool().add(palavra);
 	}
-
+	
 	@Override
 	public void remover(Palavra palavra) throws RepositoryException {
-		// TODO Auto-generated method stub
-		
+		if (palavra == null)
+			throw new IllegalArgumentException("O argumento não pode ser null");
+		this.getPool().remove(palavra);
 	}
 }

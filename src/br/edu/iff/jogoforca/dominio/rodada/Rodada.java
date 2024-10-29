@@ -25,9 +25,10 @@ public class Rodada extends ObjetoDominioImpl {
         this.erradas = Arrays.asList(erradas);
         this.jogador = jogador;
         this.itens = itens;
+        
         Tema testeMesmoTema = this.itens[0].getPalavra().getTema();
         for(int i = 0; i < this.itens.length; i++) {
-            if(itens[i].getPalavra().getTema() != testeMesmoTema) {
+            if(itens[i].getPalavra().getTema().getNome() != testeMesmoTema.getNome()) {
                 throw new RuntimeException("Todas as palavras devem ter o mesmo tema");
             }
         }
@@ -43,7 +44,7 @@ public class Rodada extends ObjetoDominioImpl {
         this.erradas = new ArrayList<Letra>();
         Tema testeMesmoTema = this.itens[0].getPalavra().getTema();
         for(int i = 0; i<= this.itens.length-1; i++) {
-            if(itens[i].getPalavra().getTema() != testeMesmoTema) {
+            if(itens[i].getPalavra().getTema().getNome() != testeMesmoTema.getNome()) {
                 throw new RuntimeException("Todas as palavras devem ter o mesmo tema");
             }
         }
