@@ -4,19 +4,19 @@ import br.edu.iff.factory.EntityFactory;
 
 public class JogadorFactoryImpl extends EntityFactory implements JogadorFactory {
 	private static JogadorFactoryImpl soleInstance = null;
-	private JogadorRepository repository;
+	private JogadorRepository jogadorRepository;
 	
-	private JogadorFactoryImpl(JogadorRepository repository) {
-		super(repository);
+	private JogadorFactoryImpl(JogadorRepository jogadorRepository) {
+		super(jogadorRepository);
 	}
 	
 	private JogadorRepository getJogadorRepository() {
-		return this.repository;
+		return this.jogadorRepository;
 	}
 
-	public static void createSoloInstance(JogadorRepository repository) {
+	public static void createSoloInstance(JogadorRepository jogadorRepository) {
 		if (soleInstance == null) {
-            new JogadorFactoryImpl(repository);
+            new JogadorFactoryImpl(jogadorRepository);
         }
 	}
 	
