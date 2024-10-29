@@ -29,7 +29,11 @@ public class RodadaSorteioFactory extends RodadaFactoryImpl {
 
 	@Override
 	public Rodada getRodada(Jogador jogador) {
-		return null;
+		return Rodada.criar(
+				this.getRodadaRepository().getProximoId(),
+				this.getPalavraRepository().getPorTema(this.getTemaRepository().getPorId(0)), //adicionar para pegar o array de palavras e o tema aleatorio
+				jogador
+		);
 	}
 	
 }
